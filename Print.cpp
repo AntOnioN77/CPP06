@@ -3,7 +3,7 @@
 #include "ScalarConverter.hpp"
 #include <math.h>
 #include <limits>
-//#include <type_traits>
+#include <cmath>
 
 void ScalarConverter::Print(std::string str)
 {
@@ -19,11 +19,12 @@ void ScalarConverter::Print(char c)
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << "float: " << static_cast<float>(c) << std::endl;
 	std::cout << "double: " << static_cast<double>(c) << std::endl;
-
 }
 
 void ScalarConverter::Print(float n)
 {
+	bool is_fractional = (std::fmod(n, 1.0) != 0.0);
+
 	std::cout << "char: ";
 	if (n < 0 || n > 127 )
 		std::cout << "impossible" << std::endl;
@@ -36,12 +37,15 @@ void ScalarConverter::Print(float n)
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(n) << std::endl;
-	std::cout << "float: " << n << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(n) << std::endl;
+	std::cout << "float: " << n << (is_fractional ? "f" : ".0f") << std::endl;
+	std::cout << "double: " << static_cast<double>(n) << (is_fractional ? "" : ".0") << std::endl;
 }
 
 void ScalarConverter::Print(double n)
 {
+	bool is_fractional = (std::fmod(n, 1.0) != 0.0);
+
+	//char
 	std::cout << "char: ";
 	if (n < 0 || n > 127)
 		std::cout << "impossible" << std::endl;
@@ -49,17 +53,20 @@ void ScalarConverter::Print(double n)
 		std::cout << "Non displayable" << std::endl;
 	else
 		std::cout << static_cast<unsigned char>(n) << std::endl;
+	//int
 	std::cout << "int: ";
 	if (n < std::numeric_limits<int>::min() || n > std::numeric_limits<int>::max())
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << static_cast<int>(n) << std::endl;
+	//float
 	std::cout << "float: ";
 	if (n < -std::numeric_limits<float>::max() || n > std::numeric_limits<float>::max())
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << static_cast<float>(n) << "f" << std::endl;
-	std::cout << "double: " << n << std::endl;
+		std::cout << static_cast<float>(n) << (is_fractional ? "f" : ".0f") << std::endl;
+	//double
+	std::cout << "double: " << n << (is_fractional ? "" : ".0") << std::endl;
 }
 
 void ScalarConverter::Print(int n)
@@ -77,8 +84,8 @@ void ScalarConverter::Print(int n)
 	if (n < -std::numeric_limits<float>::max() || n > std::numeric_limits<float>::max())
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << static_cast<float>(n) << "f" << std::endl;
-	std::cout << "double: " << n << std::endl;
+		std::cout << static_cast<float>(n) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(n) << ".0" << std::endl;
 }
 
 void ScalarConverter::Print_invalid()

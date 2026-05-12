@@ -1,3 +1,8 @@
+
+
+
+//c++ -Wall -Wextra -Werror -std=c++98 main.cpp ScalarConverter.cpp ParseType.cpp Print.cpp -o convert
+
 #include "ScalarConverter.hpp"
 #include <iostream>
 
