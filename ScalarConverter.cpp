@@ -83,6 +83,9 @@ void ScalarConverter::convert(std::string literal)
 			else
 				Print(static_cast<int>(n_long));
 			break;
+		case INVALID:
+			Print_invalid();
+			break;
 	}
 }
 

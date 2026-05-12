@@ -51,6 +51,8 @@ static bool is_double(const std::string &literal)
 
 Type ScalarConverter::ParseType(const std::string &literal)
 {
+	if (literal.empty())
+		return INVALID;
 	if (is_flag(literal))
 		return FLAG;
 	if (is_char(literal))

@@ -2,7 +2,7 @@
 # define SCALAR_CONVERTER_HPP
 # include <string>
 
-enum Type {CHAR, FLOAT, DOUBLE, INTEGER, FLAG};
+enum Type {CHAR, FLOAT, DOUBLE, INTEGER, FLAG, INVALID};
 
 class ScalarConverter {
 private:
@@ -10,7 +10,7 @@ private:
 	ScalarConverter(const ScalarConverter &other);
 	ScalarConverter &operator=(const ScalarConverter &other);// AQUI?????????????????????????????
 	static Type ParseType(const std::string &literal);
-	static void Print(std::string str);
+	static void Print(const std::string &str);
 	static void Print(char c);
 	static void Print(float n);
 	static void Print(double n);
