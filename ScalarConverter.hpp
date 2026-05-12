@@ -2,23 +2,29 @@
 # define SCALAR_CONVERTER_HPP
 # include <string>
 
-enum Type {CHAR, FLOAT, DOUBLE, INTEGER, FLAG, FAIL};
+enum Type {CHAR, FLOAT, DOUBLE, INTEGER, FLAG};
 
 class ScalarConverter {
 private:
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter &other);
 	ScalarConverter &operator=(const ScalarConverter &other);// AQUI?????????????????????????????
-
+	static Type ParseType(const std::string &literal);
+	static void Print(std::string str);
+	static void Print(char c);
+	static void Print(float n);
+	static void Print(double n);
+	static void Print(int n);
+	static void Print_invalid();
 	
 public:
-	// Constructores
-	virtual ~ScalarConverter();
+	~ScalarConverter();
 
 	// Métodos
 	static void convert(std::string literal);
 };
 
-Type ParseType(const std::string &literal);
+
+
 
 #endif
