@@ -3,10 +3,10 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Archivos
-SRCS = main.cpp \
-	   Serializer.cpp \
+SRCS = Serializer.cpp \
+	 main.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = convert
+NAME = serialize
 
 # Reglas
 all: $(NAME)
