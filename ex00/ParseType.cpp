@@ -1,6 +1,5 @@
 #include "ScalarConverter.hpp"
 #include <string>
-#include <limits.h>
 
 static bool is_flag(const std::string &literal)
 {
