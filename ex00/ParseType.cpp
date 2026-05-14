@@ -28,7 +28,7 @@ static bool is_float(const std::string &literal)
 		return false;
 	if (literal.find('.') == std::string::npos)
 		return false;
-	for (std::string::const_iterator it = (literal.begin() + literal.find('.')); it != literal.end(); ++it)
+	for (std::string::const_iterator it = (literal.begin()); it != literal.end(); ++it)
 	{
 		if (isdigit(*it))
 			return true;
